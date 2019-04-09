@@ -1,0 +1,1 @@
+# kenjinote.github.io
