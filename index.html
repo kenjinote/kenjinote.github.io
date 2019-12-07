@@ -1,108 +1,108 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>KENJI'S HOMEPAGE</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
-  		<script src="js/jquery-3.2.1.min.js"></script>
-   		<script src="js/three.min.js"></script>
-	    <script type="text/javascript">
-			var camera, scene, renderer;
-			var particles;	
-			$(function(){
-				renderer=new THREE.WebGLRenderer({antialias:true, alpha:true});
-				renderer.setPixelRatio(window.devicePixelRatio);
-				renderer.setSize(window.innerWidth,window.innerHeight);
-				$("#myCanvas").append(renderer.domElement);
-				scene=new THREE.Scene();
-				scene.fog=new THREE.Fog(0x000000,1200,1500);
-				camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,2000);
-				camera.position.z=1000;
-				var geometry=new THREE.Geometry();
-				for(i=0;i<10000;i++){
-					var vertex=new THREE.Vector3();
-					vertex.x=Math.random()*2000-1000;
-					vertex.y=Math.random()*2000-1000;
-					vertex.z=Math.random()*2000-1000;
-					geometry.vertices.push(vertex);
-				}
-				var textureLoader=new THREE.TextureLoader();
-				var spriteImg=textureLoader.load("images/sprite.png");
-				var materials=new THREE.PointsMaterial({
-					size:20,
-					map:spriteImg,
-					blending:THREE.AdditiveBlending,
-					depthTest:false,
-					transparent:true,
-					opacity:0.5
-				});
-				particles=new THREE.Points( geometry, materials );
-				scene.add(particles);
-				animate();
-				window.addEventListener('resize',onWindowResize,false);
-			});
-			function onWindowResize(){
-				camera.aspect=window.innerWidth/window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize(window.innerWidth,window.innerHeight);
-			}
-			function animate(){
-				requestAnimationFrame(animate);
-				render();
-			}
-			function render(){
-				particles.rotation.x+=0.001;
-				renderer.render(scene,camera);
-			}
-		</script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60997585-6"></script>
-        <script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'UA-60997585-6');
-        </script>
-		<style>
-			#myCanvas {
-                background-image: url("images/bg.jpg");
-				position:fixed;
-				top:0;
-				left:0;
-				width:100%;
-				height:100%;
-			}
-			#body {
-				position:absolute;
-				top:0;
-				left:0;
-				width:100%;
-				height:100%;
-				display:flex;
-				align-items:center;
-				justify-content:center;
-				flex-direction:column;
-				font-family: 'Amatic SC', cursive;
-			}
-			h1 {
-				margin:0;
-				font-size:80px;
-				color:#fff;
-			}
-		</style>
-	</head>
-    <body>
-		<div id="myCanvas"></div>
-  		<section id="body">
-            <h1>KENJI'S HOMEPAGE</h1>
-            <div>
-                <a href="https://hack.jp" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="wordpress" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M61.7 169.4l101.5 278C92.2 413 43.3 340.2 43.3 256c0-30.9 6.6-60.1 18.4-86.6zm337.9 75.9c0-26.3-9.4-44.5-17.5-58.7-10.8-17.5-20.9-32.4-20.9-49.9 0-19.6 14.8-37.8 35.7-37.8.9 0 1.8.1 2.8.2-37.9-34.7-88.3-55.9-143.7-55.9-74.3 0-139.7 38.1-177.8 95.9 5 .2 9.7.3 13.7.3 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l77.5 230.4L249.8 247l-33.1-90.8c-11.5-.7-22.3-2-22.3-2-11.5-.7-10.1-18.2 1.3-17.5 0 0 35.1 2.7 56 2.7 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l76.9 228.7 21.2-70.9c9-29.4 16-50.5 16-68.7zm-139.9 29.3l-63.8 185.5c19.1 5.6 39.2 8.7 60.1 8.7 24.8 0 48.5-4.3 70.6-12.1-.6-.9-1.1-1.9-1.5-2.9l-65.4-179.2zm183-120.7c.9 6.8 1.4 14 1.4 21.9 0 21.6-4 45.8-16.2 76.2l-65 187.9C426.2 403 468.7 334.5 468.7 256c0-37-9.4-71.8-26-102.1zM504 256c0 136.8-111.3 248-248 248C119.2 504 8 392.7 8 256 8 119.2 119.2 8 256 8c136.7 0 248 111.2 248 248zm-11.4 0c0-130.5-106.2-236.6-236.6-236.6C125.5 19.4 19.4 125.5 19.4 256S125.6 492.6 256 492.6c130.5 0 236.6-106.1 236.6-236.6z"></path></svg></a>
-				<a href="https://github.com/kenjinote" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M255.988,0C114.63,0,0,117.514,0,262.487C0,378.46,73.346,476.84,175.084,511.553c12.8,2.392,17.473-5.696,17.473-12.651c0-6.231-0.222-22.754-0.345-44.658c-71.212,15.861-86.237-35.186-86.237-35.186c-11.641-30.307-28.424-38.395-28.424-38.395c-23.244-16.271,1.757-15.956,1.757-15.956c25.692,1.856,39.213,27.065,39.213,27.065c22.837,40.095,59.917,28.513,74.504,21.81c2.325-16.963,8.94-28.545,16.253-35.091c-56.847-6.641-116.61-29.143-116.61-129.733c0-28.655,9.976-52.085,26.352-70.433c-2.632-6.641-11.419-33.329,2.509-69.465c0,0,21.494-7.058,70.399,26.908c20.419-5.822,42.32-8.733,64.091-8.835c21.748,0.103,43.633,3.013,64.091,8.835c48.882-33.965,70.338-26.908,70.338-26.908c13.966,36.137,5.172,62.825,2.547,69.465c16.392,18.348,26.306,41.778,26.306,70.433c0,100.842-59.854,123.03-116.886,129.512c9.192,8.12,17.373,24.139,17.373,48.624c0,35.091-0.307,63.383-0.307,72.007c0,7.018,4.604,15.169,17.604,12.619C438.731,476.745,512,378.429,512,262.487C512,117.514,397.385,0,255.988,0z"></path></svg></a>
-                <a href="https://twitter.com/kenjinote" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a>
-                <a href="https://kenji.blog/" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="tumblr" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M512,256.001c0,141.385-114.614,256-256,256c-141.384,0-256-114.614-256-256s114.616-256,256-256 C397.386,0.001,512,114.616,512,256.001z M276.413,313.53v-77.011h54.362v-55.657h-54.362v-75.936H229.82c-2.162,33.44-20.93,72.054-65.798,83.704v47.889h40.771v88.442c0,55.227,33.442,78.313,78.311,78.313h49.831v-58.677h-26.318 C288.064,344.597,276.413,336.612,276.413,313.53"></path></svg></a>
-                <a href="https://www.instagram.com/kenjinote/" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="tumblr" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M256.002,0c-69.526,0-78.245,0.295-105.549,1.541c-27.249,1.242-45.858,5.57-62.142,11.896C71.477,19.98,57.2,28.734,42.968,42.966S19.983,71.474,13.44,88.309c-6.328,16.283-10.655,34.894-11.899,62.142C0.295,177.757,0,186.473,0,256c0,69.525,0.294,78.243,1.541,105.549c1.244,27.248,5.571,45.857,11.899,62.141c6.542,16.834,15.296,31.111,29.528,45.345c14.232,14.232,28.508,22.984,45.343,29.527c16.284,6.327,34.893,10.655,62.142,11.897c27.305,1.246,36.023,1.541,105.549,1.541c69.525,0,78.242-0.295,105.548-1.541c27.248-1.242,45.855-5.57,62.141-11.897c16.834-6.543,31.111-15.296,45.344-29.527c14.23-14.232,22.984-28.511,29.527-45.345c6.328-16.282,10.656-34.893,11.896-62.141C511.705,334.243,512,325.526,512,256s-0.295-78.243-1.541-105.549c-1.24-27.248-5.568-45.857-11.896-62.142c-6.543-16.835-15.297-31.111-29.527-45.344c-14.232-14.23-28.51-22.985-45.344-29.526c-16.283-6.328-34.893-10.656-62.141-11.898C334.244,0.295,325.527,0,256.002,0L256.002,0z M256.002,46.126c68.353,0,76.451,0.262,103.445,1.492c24.959,1.139,38.516,5.31,47.535,8.813c11.949,4.646,20.477,10.191,29.438,19.15c8.959,8.959,14.506,17.485,19.148,29.436c3.506,9.021,7.676,22.576,8.814,47.535c1.23,26.995,1.492,35.092,1.492,103.446c0,68.354-0.262,76.451-1.492,103.446c-1.139,24.959-5.311,38.515-8.814,47.535c-4.645,11.949-10.189,20.477-19.148,29.436s-17.486,14.506-29.438,19.15c-9.02,3.505-22.576,7.676-47.535,8.813c-26.99,1.231-35.086,1.493-103.445,1.493c-68.36,0-76.457-0.262-103.446-1.493c-24.96-1.138-38.515-5.309-47.536-8.813c-11.949-4.646-20.478-10.191-29.435-19.15c-8.958-8.959-14.506-17.485-19.15-29.436c-3.506-9.021-7.676-22.576-8.814-47.535c-1.231-26.995-1.493-35.093-1.493-103.446c0-68.354,0.261-76.451,1.493-103.446c1.139-24.959,5.309-38.515,8.814-47.535c4.644-11.949,10.192-20.477,19.15-29.436s17.486-14.506,29.436-19.15c9.021-3.505,22.576-7.676,47.536-8.813C179.549,46.387,187.647,46.126,256.002,46.126 M256.002,341.333c-47.129,0-85.334-38.205-85.334-85.333s38.205-85.333,85.334-85.333c47.126,0,85.332,38.205,85.332,85.333S303.129,341.333,256.002,341.333z M256.002,124.541c-72.604,0-131.46,58.854-131.46,131.459c0,72.604,58.856,131.459,131.46,131.459c72.603,0,131.457-58.855,131.457-131.459C387.459,183.395,328.605,124.541,256.002,124.541M423.375,119.346c0,16.967-13.754,30.72-30.721,30.72c-16.965,0-30.719-13.753-30.719-30.72c0-16.966,13.754-30.721,30.719-30.721C409.621,88.626,423.375,102.381,423.375,119.346"></path></svg></a>
-                <a href="https://www.facebook.com/kenji256" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path id="path14" fill="currentColor" d="M512,257.564C512,386.122,418.385,492.677,295.999,512V332.016h59.651L367,257.564h-71.001v-48.315c0-20.368,9.918-40.223,41.72-40.223H370v-63.385c0,0-29.297-5.03-57.305-5.03c-58.477,0-96.695,35.656-96.695,100.209v56.744h-65v74.452h65V512C93.614,492.677,0,386.122,0,257.564C0,115.315,114.614,0,256,0C397.385,0,512,115.315,512,257.564"></path></svg></a>
-           </div>
-		</section>
-    </body>
+<head>
+    <title>KENJI'S HOMEPAGE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script type="text/javascript">
+        var camera, scene, renderer;
+        var particles;
+        $(function () {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            $("#myCanvas").append(renderer.domElement);
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x000000, 1200, 1500);
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+            camera.position.z = 1000;
+            var geometry = new THREE.Geometry();
+            for (i = 0; i < 10000; i++) {
+                var vertex = new THREE.Vector3();
+                vertex.x = Math.random() * 2000 - 1000;
+                vertex.y = Math.random() * 2000 - 1000;
+                vertex.z = Math.random() * 2000 - 1000;
+                geometry.vertices.push(vertex);
+            }
+            var textureLoader = new THREE.TextureLoader();
+            var spriteImg = textureLoader.load("images/sprite.png");
+            var materials = new THREE.PointsMaterial({
+                size: 20,
+                map: spriteImg,
+                blending: THREE.AdditiveBlending,
+                depthTest: false,
+                transparent: true,
+                opacity: 0.5
+            });
+            particles = new THREE.Points(geometry, materials);
+            scene.add(particles);
+            animate();
+            window.addEventListener('resize', onWindowResize, false);
+        });
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+        }
+        function render() {
+            particles.rotation.x += 0.001;
+            renderer.render(scene, camera);
+        }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60997585-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-60997585-6');
+    </script>
+    <style>
+        #myCanvas {
+            background-image: url("images/bg.jpg");
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Amatic SC', cursive;
+        }
+        h1 {
+            margin: 0;
+            font-size: 80px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="myCanvas"></div>
+    <section id="body">
+        <h1>KENJI'S HOMEPAGE</h1>
+        <div>
+            <a href="https://hack.jp" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="wordpress" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M61.7 169.4l101.5 278C92.2 413 43.3 340.2 43.3 256c0-30.9 6.6-60.1 18.4-86.6zm337.9 75.9c0-26.3-9.4-44.5-17.5-58.7-10.8-17.5-20.9-32.4-20.9-49.9 0-19.6 14.8-37.8 35.7-37.8.9 0 1.8.1 2.8.2-37.9-34.7-88.3-55.9-143.7-55.9-74.3 0-139.7 38.1-177.8 95.9 5 .2 9.7.3 13.7.3 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l77.5 230.4L249.8 247l-33.1-90.8c-11.5-.7-22.3-2-22.3-2-11.5-.7-10.1-18.2 1.3-17.5 0 0 35.1 2.7 56 2.7 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l76.9 228.7 21.2-70.9c9-29.4 16-50.5 16-68.7zm-139.9 29.3l-63.8 185.5c19.1 5.6 39.2 8.7 60.1 8.7 24.8 0 48.5-4.3 70.6-12.1-.6-.9-1.1-1.9-1.5-2.9l-65.4-179.2zm183-120.7c.9 6.8 1.4 14 1.4 21.9 0 21.6-4 45.8-16.2 76.2l-65 187.9C426.2 403 468.7 334.5 468.7 256c0-37-9.4-71.8-26-102.1zM504 256c0 136.8-111.3 248-248 248C119.2 504 8 392.7 8 256 8 119.2 119.2 8 256 8c136.7 0 248 111.2 248 248zm-11.4 0c0-130.5-106.2-236.6-236.6-236.6C125.5 19.4 19.4 125.5 19.4 256S125.6 492.6 256 492.6c130.5 0 236.6-106.1 236.6-236.6z"></path></svg></a>
+            <a href="https://github.com/kenjinote" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M255.988,0C114.63,0,0,117.514,0,262.487C0,378.46,73.346,476.84,175.084,511.553c12.8,2.392,17.473-5.696,17.473-12.651c0-6.231-0.222-22.754-0.345-44.658c-71.212,15.861-86.237-35.186-86.237-35.186c-11.641-30.307-28.424-38.395-28.424-38.395c-23.244-16.271,1.757-15.956,1.757-15.956c25.692,1.856,39.213,27.065,39.213,27.065c22.837,40.095,59.917,28.513,74.504,21.81c2.325-16.963,8.94-28.545,16.253-35.091c-56.847-6.641-116.61-29.143-116.61-129.733c0-28.655,9.976-52.085,26.352-70.433c-2.632-6.641-11.419-33.329,2.509-69.465c0,0,21.494-7.058,70.399,26.908c20.419-5.822,42.32-8.733,64.091-8.835c21.748,0.103,43.633,3.013,64.091,8.835c48.882-33.965,70.338-26.908,70.338-26.908c13.966,36.137,5.172,62.825,2.547,69.465c16.392,18.348,26.306,41.778,26.306,70.433c0,100.842-59.854,123.03-116.886,129.512c9.192,8.12,17.373,24.139,17.373,48.624c0,35.091-0.307,63.383-0.307,72.007c0,7.018,4.604,15.169,17.604,12.619C438.731,476.745,512,378.429,512,262.487C512,117.514,397.385,0,255.988,0z"></path></svg></a>
+            <a href="https://twitter.com/kenjinote" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a>
+            <a href="https://kenji.blog/" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="tumblr" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M512,256.001c0,141.385-114.614,256-256,256c-141.384,0-256-114.614-256-256s114.616-256,256-256 C397.386,0.001,512,114.616,512,256.001z M276.413,313.53v-77.011h54.362v-55.657h-54.362v-75.936H229.82c-2.162,33.44-20.93,72.054-65.798,83.704v47.889h40.771v88.442c0,55.227,33.442,78.313,78.311,78.313h49.831v-58.677h-26.318 C288.064,344.597,276.413,336.612,276.413,313.53"></path></svg></a>
+            <a href="https://www.instagram.com/kenjinote/" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="tumblr" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path fill="currentColor" d="M256.002,0c-69.526,0-78.245,0.295-105.549,1.541c-27.249,1.242-45.858,5.57-62.142,11.896C71.477,19.98,57.2,28.734,42.968,42.966S19.983,71.474,13.44,88.309c-6.328,16.283-10.655,34.894-11.899,62.142C0.295,177.757,0,186.473,0,256c0,69.525,0.294,78.243,1.541,105.549c1.244,27.248,5.571,45.857,11.899,62.141c6.542,16.834,15.296,31.111,29.528,45.345c14.232,14.232,28.508,22.984,45.343,29.527c16.284,6.327,34.893,10.655,62.142,11.897c27.305,1.246,36.023,1.541,105.549,1.541c69.525,0,78.242-0.295,105.548-1.541c27.248-1.242,45.855-5.57,62.141-11.897c16.834-6.543,31.111-15.296,45.344-29.527c14.23-14.232,22.984-28.511,29.527-45.345c6.328-16.282,10.656-34.893,11.896-62.141C511.705,334.243,512,325.526,512,256s-0.295-78.243-1.541-105.549c-1.24-27.248-5.568-45.857-11.896-62.142c-6.543-16.835-15.297-31.111-29.527-45.344c-14.232-14.23-28.51-22.985-45.344-29.526c-16.283-6.328-34.893-10.656-62.141-11.898C334.244,0.295,325.527,0,256.002,0L256.002,0z M256.002,46.126c68.353,0,76.451,0.262,103.445,1.492c24.959,1.139,38.516,5.31,47.535,8.813c11.949,4.646,20.477,10.191,29.438,19.15c8.959,8.959,14.506,17.485,19.148,29.436c3.506,9.021,7.676,22.576,8.814,47.535c1.23,26.995,1.492,35.092,1.492,103.446c0,68.354-0.262,76.451-1.492,103.446c-1.139,24.959-5.311,38.515-8.814,47.535c-4.645,11.949-10.189,20.477-19.148,29.436s-17.486,14.506-29.438,19.15c-9.02,3.505-22.576,7.676-47.535,8.813c-26.99,1.231-35.086,1.493-103.445,1.493c-68.36,0-76.457-0.262-103.446-1.493c-24.96-1.138-38.515-5.309-47.536-8.813c-11.949-4.646-20.478-10.191-29.435-19.15c-8.958-8.959-14.506-17.485-19.15-29.436c-3.506-9.021-7.676-22.576-8.814-47.535c-1.231-26.995-1.493-35.093-1.493-103.446c0-68.354,0.261-76.451,1.493-103.446c1.139-24.959,5.309-38.515,8.814-47.535c4.644-11.949,10.192-20.477,19.15-29.436s17.486-14.506,29.436-19.15c9.021-3.505,22.576-7.676,47.536-8.813C179.549,46.387,187.647,46.126,256.002,46.126 M256.002,341.333c-47.129,0-85.334-38.205-85.334-85.333s38.205-85.333,85.334-85.333c47.126,0,85.332,38.205,85.332,85.333S303.129,341.333,256.002,341.333z M256.002,124.541c-72.604,0-131.46,58.854-131.46,131.459c0,72.604,58.856,131.459,131.46,131.459c72.603,0,131.457-58.855,131.457-131.459C387.459,183.395,328.605,124.541,256.002,124.541M423.375,119.346c0,16.967-13.754,30.72-30.721,30.72c-16.965,0-30.719-13.753-30.719-30.72c0-16.966,13.754-30.721,30.719-30.721C409.621,88.626,423.375,102.381,423.375,119.346"></path></svg></a>
+            <a href="https://www.facebook.com/kenji256" target="_blank"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#fff" style="width: 64px;"><path id="path14" fill="currentColor" d="M512,257.564C512,386.122,418.385,492.677,295.999,512V332.016h59.651L367,257.564h-71.001v-48.315c0-20.368,9.918-40.223,41.72-40.223H370v-63.385c0,0-29.297-5.03-57.305-5.03c-58.477,0-96.695,35.656-96.695,100.209v56.744h-65v74.452h65V512C93.614,492.677,0,386.122,0,257.564C0,115.315,114.614,0,256,0C397.385,0,512,115.315,512,257.564"></path></svg></a>
+        </div>
+    </section>
+</body>
 </html>
